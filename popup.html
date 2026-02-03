@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base Streak Counter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="game-container">
+    <!-- Scanlines -->
+    <div class="scanlines"></div>
+    
+    <!-- Header -->
+    <div class="header">
+      <div class="pixel-border top"></div>
+      <h1 class="title">BASE STREAK</h1>
+      <div class="subtitle">DAILY ONCHAIN CHALLENGE</div>
+    </div>
+
+    <!-- Wallet Input Section -->
+    <div class="wallet-section" id="walletSection">
+      <div class="input-group">
+        <input 
+          type="text" 
+          id="walletInput" 
+          placeholder="Enter wallet address or ENS..."
+          spellcheck="false"
+        >
+        <button id="trackBtn" class="pixel-btn">TRACK</button>
+      </div>
+      <div class="wallet-display" id="walletDisplay"></div>
+    </div>
+
+    <!-- Main Streak Display -->
+    <div class="streak-panel">
+      <div class="streak-main">
+        <div class="flame-container">
+          <div class="flame" id="flameIcon">🔥</div>
+        </div>
+        <div class="streak-number" id="currentStreak">0</div>
+        <div class="streak-label">DAY STREAK</div>
+      </div>
+      
+      <div class="streak-status" id="streakStatus">
+        <span class="status-icon">⏳</span>
+        <span class="status-text">NO WALLET TRACKED</span>
+      </div>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-value" id="longestStreak">0</div>
+        <div class="stat-label">BEST STREAK</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" id="totalDays">0</div>
+        <div class="stat-label">TOTAL DAYS</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" id="onBaseSince">---</div>
+        <div class="stat-label">ON BASE SINCE</div>
+      </div>
+    </div>
+
+    <!-- Activity Heatmap -->
+    <div class="heatmap-section">
+      <div class="heatmap-header">
+        <span class="heatmap-title">ACTIVITY MAP</span>
+        <span class="heatmap-period">LAST 90 DAYS</span>
+      </div>
+      <div class="heatmap-container">
+        <div class="heatmap" id="heatmap"></div>
+      </div>
+      <div class="heatmap-legend">
+        <span>Less</span>
+        <div class="legend-boxes">
+          <div class="legend-box level-0"></div>
+          <div class="legend-box level-1"></div>
+          <div class="legend-box level-2"></div>
+          <div class="legend-box level-3"></div>
+          <div class="legend-box level-4"></div>
+        </div>
+        <span>More</span>
+      </div>
+    </div>
+
+    <!-- Countdown Timer -->
+    <div class="countdown-section" id="countdownSection">
+      <div class="countdown-label">STREAK RESETS IN</div>
+      <div class="countdown-timer" id="countdownTimer">--:--:--</div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="actions">
+      <button class="action-btn" id="refreshBtn">↻ REFRESH</button>
+      <button class="action-btn" id="shareBtn">📤 SHARE</button>
+    </div>
+
+    <!-- Settings Toggle -->
+    <div class="settings-section">
+      <label class="toggle-label">
+        <input type="checkbox" id="notifyToggle">
+        <span class="toggle-switch"></span>
+        <span class="toggle-text">STREAK WARNINGS</span>
+      </label>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <span class="blink">●</span> POWERED BY BASE <span class="blink">●</span>
+    </div>
+
+    <!-- Corner decorations -->
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+  </div>
+
+  <!-- Share Modal -->
+  <div class="modal" id="shareModal">
+    <div class="modal-content">
+      <div class="modal-header">SHARE YOUR STREAK</div>
+      <canvas id="shareCanvas" width="600" height="400"></canvas>
+      <div class="modal-actions">
+        <button class="pixel-btn" id="copyImageBtn">📋 COPY IMAGE</button>
+        <button class="pixel-btn" id="downloadBtn">💾 DOWNLOAD</button>
+        <button class="pixel-btn secondary" id="closeModalBtn">CLOSE</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
