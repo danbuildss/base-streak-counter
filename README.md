@@ -66,7 +66,7 @@ Like Snapchat streaks, but for degens. Track your consecutive days of onchain ac
 
 1. **Download** this repo (Code → Download ZIP) or clone it:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/base-streak-counter.git
+   git clone https://github.com/danbuildss/base-streak-counter.git
    ```
 
 2. **Open Chrome** and go to `chrome://extensions/`
